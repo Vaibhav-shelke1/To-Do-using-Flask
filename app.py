@@ -28,7 +28,7 @@ def add_task():
     except Exception as e:
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
 
-# Get All Tasks Route
+
 @app.route('/getTasks', methods=['GET'])
 def get_tasks():
     try:
@@ -42,10 +42,10 @@ def get_tasks():
     except Exception as e:
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
 
-# Delete Task Route
+
 @app.route('/deleteTask/<int:task_id>', methods=['DELETE'])
 def delete_task(task_id):
-    """Delete a task by ID."""
+   
     try:
         db = get_db()
         result = db.execute("DELETE FROM Task WHERE id = ?", (task_id,))
@@ -61,11 +61,11 @@ def delete_task(task_id):
     except Exception as e:
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
 
-# Update Task Route
+
 @app.route('/updateTask/<int:task_id>', methods=['PUT'])
 def update_task(task_id):
     try:
-        data = request.json  # Get JSON data
+        data = request.json  
         if not data or 'task' not in data:
             return jsonify({"error": "Task content is required"}), 400
 
