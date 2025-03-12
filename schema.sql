@@ -3,5 +3,6 @@ DROP TABLE IF EXISTS Task;
 CREATE TABLE Task (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    task TEXT NOT NULL
+    task TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'complete'))
 );
